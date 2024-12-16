@@ -104,7 +104,8 @@ const loginUser = async function(req, res, next){
         res.cookie("auth_token", token, {
             httpOnly: true,
             maxAge: 0.25 * 24 * 60 * 60 * 1000,
-            sameSite: 'none',
+            sameSite: 'strict',
+            path: '/'
         })
 
         return res.status(200).json({
