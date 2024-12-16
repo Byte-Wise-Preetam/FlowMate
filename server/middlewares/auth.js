@@ -5,6 +5,8 @@ const userAuth = async function(req, res, next){
     try{
         let { auth_token } = req.cookies;
 
+        console.log("auth_token req cookie : ", auth_token);
+
         const token = auth_token;
 
         if(!token){
