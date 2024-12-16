@@ -93,26 +93,25 @@ const loginUser = async function(req, res, next){
 
         user.password = undefined;
 
-        return res.status(200).json({
-            status: true,
-            message: "User login successfully",
-            user,
-            token
-        });
-
-        //  ** For Postman **
-        // res.cookie("auth_token", token, {
-        //     httpOnly: true,
-        //     maxAge: 0.25 * 24 * 60 * 60 * 1000,
-        //     sameSite: 'none',
-        //     path: '/'
-        // })
-
         // return res.status(200).json({
         //     status: true,
         //     message: "User login successfully",
-        //     user
+        //     user,
+        //     token
         // });
+
+        //  ** For Postman **
+        res.cookie("auth_token", token, {
+            httpOnly: true,
+            maxAge: 0.25 * 24 * 60 * 60 * 1000,
+            sameSite: 'none',
+        })
+
+        return res.status(200).json({
+            status: true,
+            message: "User login successfully",
+            user
+        });
 
     }catch(error){
         return res.send(400).json({status: false, error: error.message});
