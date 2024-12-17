@@ -34,11 +34,15 @@ app.get("/", (req, res) => {
     res.send("Hello from FlowMate");
 })
 
-const startServer = async function(){
-    await connectDB();
-    app.listen(PORT, function(){
-        console.log(`Server running at http://localhost:${PORT}/`);
-    })
+if (process.env.NODE_ENV !== 'production'){
+    const startServer = async function(){
+        await connectDB();
+        app.listen(PORT, function(){
+            console.log(`Server running at http://localhost:${PORT}/`);
+        })
+    }
 }
 
 startServer();
+
+module.exports = app;
