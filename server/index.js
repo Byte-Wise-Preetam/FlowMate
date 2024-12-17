@@ -30,6 +30,10 @@ cloudinary.config({
 
 app.use("/api", routes);
 
+app.get("/", (req, res) => {
+    res.send("Hello from FlowMate");
+})
+
 const startServer = async function(){
     await connectDB();
     app.listen(PORT, function(){
