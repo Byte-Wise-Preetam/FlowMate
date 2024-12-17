@@ -106,8 +106,7 @@ const loginUser = async function(req, res, next){
             maxAge: 0.25 * 24 * 60 * 60 * 1000,
             sameSite: 'none',
             secure: true,
-            path: '/',
-            domain: "flowmate.onrender.com"
+            path: '/'
         })
 
         return res.status(200).json({
