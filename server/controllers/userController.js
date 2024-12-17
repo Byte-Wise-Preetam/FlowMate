@@ -103,9 +103,8 @@ const loginUser = async function(req, res, next){
         //  ** For Postman **
         res.cookie("auth_token", token, {
             httpOnly: true,
-            maxAge: 0.25 * 24 * 60 * 60 * 1000,
+            expires:new Date(Date.now() + 0.25 * 24 * 60 * 60 * 1000),
             sameSite: 'none',
-            secure: true,
             path: '/'
         })
 
